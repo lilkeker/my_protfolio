@@ -4,7 +4,7 @@
  */
 
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Camera, Music, Map, GraduationCap, Mail, Instagram, Github, ArrowRight, ExternalLink, X, Utensils, Film, BookOpen, Coffee, Bike } from 'lucide-react';
+import { Camera, Music, Map, GraduationCap, Mail, MessageCircle, ArrowRight, ExternalLink, X, Utensils, Film, BookOpen, Coffee, Bike } from 'lucide-react';
 import { PORTFOLIO_DATA } from './constants';
 import { useRef, useState } from 'react';
 import { Hobby } from './types';
@@ -17,7 +17,9 @@ const iconMap: Record<string, any> = {
   Utensils,
   Film,
   BookOpen,
-  Coffee
+  Coffee,
+  EATing: Utensils,
+  'Books&Films': Film
 };
 
 export default function App() {
@@ -239,15 +241,31 @@ export default function App() {
           </div>
           
           <div className="flex gap-6">
-            <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-              <Instagram size={18} />
-            </a>
-            <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-              <Github size={18} />
-            </a>
-            <a href="mailto:hello@example.com" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+            {PORTFOLIO_DATA.contact.wechat && (
+              <div
+                title={`微信号: ${PORTFOLIO_DATA.contact.wechat}`}
+                className="h-12 px-4 rounded-full border border-white/10 flex items-center gap-2 text-sm text-white/70"
+              >
+                <MessageCircle size={18} />
+                <span className="max-w-[180px] truncate">{PORTFOLIO_DATA.contact.wechat}</span>
+              </div>
+            )}
+            {PORTFOLIO_DATA.contact.redbook && (
+              <div
+                title={`小红书: ${PORTFOLIO_DATA.contact.redbook}`}
+                className="h-12 px-4 rounded-full border border-white/10 flex items-center gap-2 text-sm text-white/70"
+              >
+                <BookOpen size={18} />
+                <span className="max-w-[220px] truncate">{PORTFOLIO_DATA.contact.redbook}</span>
+              </div>
+            )}
+            <div
+              title={`邮箱: ${PORTFOLIO_DATA.contact.email}`}
+              className="h-12 px-4 rounded-full border border-white/10 flex items-center gap-2 text-sm text-white/70"
+            >
               <Mail size={18} />
-            </a>
+              <span className="max-w-[220px] truncate">{PORTFOLIO_DATA.contact.email}</span>
+            </div>
           </div>
         </div>
         
@@ -319,6 +337,42 @@ export default function App() {
                   </div>
                 )}
 
+                {/* Books & Movies Section */}
+                {((selectedHobby.books && selectedHobby.books.length > 0) ||
+                  (selectedHobby.movies && selectedHobby.movies.length > 0)) && (
+                  <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {selectedHobby.books && selectedHobby.books.length > 0 && (
+                      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+                        <h4 className="text-sm font-mono uppercase tracking-widest text-white/40 mb-3 flex items-center gap-2">
+                          <BookOpen size={14} /> 书单
+                        </h4>
+                        <ol className="list-decimal list-inside space-y-2 text-sm text-white/80">
+                          {selectedHobby.books.map((book, i) => (
+                            <li key={i} className="leading-relaxed">
+                              {book}
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+
+                    {selectedHobby.movies && selectedHobby.movies.length > 0 && (
+                      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+                        <h4 className="text-sm font-mono uppercase tracking-widest text-white/40 mb-3 flex items-center gap-2">
+                          <Film size={14} /> 片单
+                        </h4>
+                        <ol className="list-decimal list-inside space-y-2 text-sm text-white/80">
+                          {selectedHobby.movies.map((movie, i) => (
+                            <li key={i} className="leading-relaxed">
+                              {movie}
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 {/* Photos Section */}
                 {selectedHobby.photos && selectedHobby.photos.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -333,7 +387,9 @@ export default function App() {
                     ))}
                   </div>
                 ) : (
-                  !selectedHobby.music && (
+                  !(selectedHobby.music && selectedHobby.music.length > 0) &&
+                  !(selectedHobby.books && selectedHobby.books.length > 0) &&
+                  !(selectedHobby.movies && selectedHobby.movies.length > 0) && (
                     <div className="h-40 flex items-center justify-center text-white/20 italic">
                       暂无照片 / No photos available
                     </div>

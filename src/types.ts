@@ -16,6 +16,8 @@ export interface Hobby {
   icon: string;
   description: string;
   photos?: string[];
+  books?: string[];
+  movies?: string[];
   music?: {
     title: string;
     artist: string;
@@ -23,11 +25,18 @@ export interface Hobby {
   }[];
 }
 
+export interface ContactInfo {
+  wechat?: string;
+  redbook?: string;
+  email: string;
+}
+
 export interface PortfolioData {
   name: string;
   title: string;
   bio: string;
   avatar?: string;
+  contact: ContactInfo;
   education: Education[];
   hobbies: Hobby[];
   photos: Photo[];

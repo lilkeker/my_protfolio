@@ -3,8 +3,13 @@ import { PortfolioData } from './types';
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Toby Luke",
   title: "一个文青病重度患者的理工男",
-  avatar: "/me.jpg", // 可以替换成你自己的照片链接
+  avatar: "/me2.jpg", // 可以替换成你自己的照片链接
   bio: "皖人，狮子座。我是一名游走于理性与感性边缘的创造者。虽是理工科出身，却患有重度“文青病”。我热衷于用代码构建逻辑，用镜头捕捉瞬间，致力于打造兼具技术深度与艺术温度的数字体验。",
+  contact: {
+    wechat: "wechat: luke19550280174",
+    redbook: "redbook: 297195389",
+    email: "luke.hn.99@gmail.com"
+  },
   education: [
     {
       degree: "工学硕士 (Master's Degree)",
@@ -27,7 +32,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
       photos: [
         "/咖啡店.jpg",
         "/咖啡店1.jpg",
-        "https://picsum.photos/seed/cafe1/800/600"
+        "/咖啡店2.jpg",
+        "/咖啡店3.jpg"
       ]
     },
     {
@@ -63,28 +69,47 @@ export const PORTFOLIO_DATA: PortfolioData = {
       description: "喜欢骑行(不是pro)和徒步，在大自然中更能放松自我!!",
       photos: [
         "/我的小粉.jpg",
-        "https://picsum.photos/seed/hike1/800/600",
-        "https://picsum.photos/seed/mountain1/800/600"
+        "/小粉2.jpg",
+        "/小粉3.jpg"
       ]
     },
     {
       name: "喜欢吃",
-      icon: "Utensils",
-      description: "钟爱苍蝇馆子、土菜馆&麦当劳，酸甜苦辣都爱吃！",
+      icon: "EATing",
+      description: "会做饭也喜欢下馆子，喜欢土菜馆&麦当劳，酸甜苦辣都爱吃！",
       photos: [
         "/巴菲杯.jpg",
-        "https://picsum.photos/seed/food2/800/600",
-        "https://picsum.photos/seed/food3/800/600"
+        "/自己做的龙虾.jpg",
+        "/自己做的三明治.jpg",
+        "/自己做的糖葫芦.jpg",
+        "/衢州菜.jpg",
+        "/大排面.jpg"
       ]
     },
     {
       name: "书影",
       icon: "Books&Films",
       description: "看过的电影和书！",
-      photos: [
-        "https://picsum.photos/seed/movie1/800/600",
-        "https://picsum.photos/seed/library1/800/600",
-        "https://picsum.photos/seed/cinema1/800/600"
+      books: [
+        "克林索尔的最后夏天",
+        "悉达多",
+        "白夜行",
+        "局外人",
+        "此生未完成",
+        "在轮下",
+        "need read more"
+      ],
+      movies: [
+        "一一",
+        "星际穿越",
+        "红辣椒",
+        "本杰明·巴顿奇事",
+        "超脱",
+        "黑镜",
+        "爱，死亡和机器人",
+        "山河故人",
+        "小武",
+        "need watch more"
       ]
     }
   ],
@@ -100,8 +125,18 @@ export const PORTFOLIO_DATA: PortfolioData = {
       category: "城市"
     },
     {
+      url: "/钱塘江.jpg",
+      title: "杭州江边",
+      category: "城市"
+    },
+    {
       url: "/栾树.jpg",
       title: "秋日风景",
+      category: "自然"
+    },
+    {
+      url: "/树.jpg",
+      title: "骑车拍到的",
       category: "自然"
     },
     {
